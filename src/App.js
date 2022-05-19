@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import FilterButton from "./Components/FilterButton";
 import Forms from "./Components/Forms";
@@ -15,6 +16,8 @@ function App(props) {
       key={aditya.id}
     />
   ));
+
+  const [tasks, setTasks] = useState(props.tasks);
 
   function addTask(name) {
     alert(name);
