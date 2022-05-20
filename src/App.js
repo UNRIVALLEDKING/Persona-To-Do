@@ -3,6 +3,7 @@ import "./App.css";
 import FilterButton from "./Components/FilterButton";
 import Forms from "./Components/Forms";
 import Todo from "./Components/Todo";
+import { nanoid } from "nanoid";
 
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
@@ -19,7 +20,10 @@ function App(props) {
   ));
 
   function addTask(name) {
-    alert(name);
+    // const newTask = { id: "id", name: name, completed: false };
+    // setTasks([...tasks, newTask]);
+    const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
+    setTasks([...tasks, newTask]);
   }
 
   return (
