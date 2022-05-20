@@ -5,10 +5,11 @@ import Forms from "./Components/Forms";
 import Todo from "./Components/Todo";
 
 function App(props) {
+  const [tasks, setTasks] = useState(props.tasks);
   console.log(props.tasks);
   // const taskList = props.tasks?.map((aditya) => aditya.name);
 
-  const myTodo = props.tasks?.map((aditya) => (
+  const myTodo = tasks?.map((aditya) => (
     <Todo
       id={aditya.id}
       name={aditya.name}
@@ -16,8 +17,6 @@ function App(props) {
       key={aditya.id}
     />
   ));
-
-  const [tasks, setTasks] = useState(props.tasks);
 
   function addTask(name) {
     alert(name);
