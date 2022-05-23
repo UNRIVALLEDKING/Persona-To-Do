@@ -28,6 +28,12 @@ function App(props) {
     setTasks(updatedTasks);
   }
 
+  function deleteTask(id) {
+    // console.log(id);
+    const remainingTasks = tasks.filter((task) => id !== task.id);
+    setTasks(remainingTasks);
+  }
+
   const myTodo = tasks?.map((aditya) => (
     <Todo
       id={aditya.id}
@@ -35,6 +41,7 @@ function App(props) {
       completed={aditya.completed}
       key={aditya.id}
       toggleTaskCompleted={toggleTaskCompleted}
+      deleteTask={deleteTask}
     />
   ));
 
