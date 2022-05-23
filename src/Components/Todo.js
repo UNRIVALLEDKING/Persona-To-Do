@@ -13,6 +13,7 @@ export default function Todo(props) {
             id={props.id}
             type="checkbox"
             defaultChecked={props.completed}
+            onChange={() => props.toggleTaskCompleted(props.id)}
           />
           <label className="todo-label" htmlFor="todo-0">
             {props.name}

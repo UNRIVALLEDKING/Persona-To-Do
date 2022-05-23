@@ -7,8 +7,16 @@ import { nanoid } from "nanoid";
 
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
+  // const headingText = `${taskList.length} tasks remaining`;
   console.log(props.tasks);
   // const taskList = props.tasks?.map((aditya) => aditya.name);
+
+  const tasksNoun = tasks.length !== 1 ? "tasks" : "task";
+  const headingText = `${tasks.length} ${tasksNoun} remaining`;
+
+  function toggleTaskCompleted(id) {
+    console.log(tasks[0]);
+  }
 
   const myTodo = tasks?.map((aditya) => (
     <Todo
@@ -16,6 +24,7 @@ function App(props) {
       name={aditya.name}
       completed={aditya.completed}
       key={aditya.id}
+      toggleTaskCompleted={toggleTaskCompleted}
     />
   ));
 
@@ -36,7 +45,7 @@ function App(props) {
           <FilterButton />
           <FilterButton />
         </div>
-        <h2 id="list-heading">3 tasks remaining</h2>
+        <h2 id="list-heading">{headingText}</h2>
         <ul
           role="list"
           className="todo-list stack-large stack-exception"
