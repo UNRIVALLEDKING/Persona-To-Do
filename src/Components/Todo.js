@@ -15,7 +15,11 @@ export default function Todo(props) {
         <input id={props.id} className="todo-text" type="text" />
       </div>
       <div className="btn-group">
-        <button type="button" className="btn todo-cancel">
+        <button
+          type="button"
+          className="btn todo-cancel"
+          onClick={() => setEditing(false)}
+        >
           Cancel
           <span className="visually-hidden">renaming {props.name}</span>
         </button>
@@ -59,8 +63,12 @@ export default function Todo(props) {
       <li className="todo stack-small">
         {isEditing ? editingTemplate : viewTemplate}
         <div className="btn-group">
-          <button type="button" className="btn">
-            Edit <span className="visually-hidden">Eat</span>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => setEditing(true)}
+          >
+            Edit <span className="visually-hidden">{props.name}</span>
           </button>
           <button
             type="button"
