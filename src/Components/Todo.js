@@ -5,6 +5,19 @@ export default function Todo(props) {
   //   console.log(props.name);
   //   console.log(props.completed);
 
+  const [newName, setNewName] = useState("");
+
+  function handleChange(e) {
+    setNewName(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.editTask(props.id, newName);
+    setNewName("");
+    setEditing(false);
+  }
+
   const [isEditing, setEditing] = useState(false);
   const editingTemplate = (
     <form className="stack-small">
@@ -12,7 +25,13 @@ export default function Todo(props) {
         <label className="todo-label" htmlFor={props.id}>
           New name for {props.name}
         </label>
-        <input id={props.id} className="todo-text" type="text" />
+        <input
+          id={props.id}
+          className="todo-text"
+          value={newName}
+          onChange={handleChange}
+          type="text"
+        />
       </div>
       <div className="btn-group">
         <button
